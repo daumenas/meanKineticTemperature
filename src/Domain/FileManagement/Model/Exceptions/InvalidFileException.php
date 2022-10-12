@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace App\Domain\FileManagement\Model\Exceptions;
 
 class InvalidFileException extends \Exception {
     public function __construct(string $message = "")

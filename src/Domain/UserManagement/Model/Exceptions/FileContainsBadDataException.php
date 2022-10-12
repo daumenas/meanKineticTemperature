@@ -2,5 +2,5 @@
 
 namespace App\Domain\UserManagement\Model\Exceptions;
 
-class BadDataException extends \Exception {
+class FileContainsBadDataException extends \Exception {
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repository;
+namespace App\Domain\UserManagement\Model\Storage\Repository;
 
-use App\Entity\User;
-use App\Entity\UserFile;
+use App\Domain\UserManagement\Model\Entity\User;
+use App\Repository\AbstractRepository;
 use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -35,7 +35,7 @@ class UserRepository extends AbstractRepository
     /**
      * @throws EntityNotFoundException
      */
-    public function findOneByIpOrFail(float $ip): User
+    public function findOneByIpOrFail(string $ip): User
     {
         return $this->findOneByOrFail(['ipAddress' => $ip]);
     }

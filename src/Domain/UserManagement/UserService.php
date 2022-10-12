@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Service;
+namespace App\Domain\UserManagement;
 
-use App\Repository\UserFileRepository;
-use App\Repository\UserRepository;
+use App\Domain\UserManagement\Model\Entity\User;
+use App\Domain\UserManagement\Model\Storage\Repository\UserRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityNotFoundException;
 
 class UserService
 {
-    private UserRepository $userRepository;
+    /** @required */
+    public UserRepository $userRepository;
 
     public function __constructor(UserRepository $userRepository)
     {
@@ -19,7 +20,7 @@ class UserService
     /**
      * @throws EntityNotFoundException
      */
-    public function findOneByIp(float $ipAddress): Collection
+    public function findOneByIp(string $ipAddress): User
     {
         return $this->userRepository->findOneByIpOrFail($ipAddress);
     }

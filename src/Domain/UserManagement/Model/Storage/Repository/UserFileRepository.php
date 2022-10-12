@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repository;
+namespace App\Domain\UserManagement\Model\Storage\Repository;
 
-use App\Entity\User;
-use App\Entity\UserFile;
+use App\Domain\UserManagement\Model\Entity\UserFile;
+use App\Repository\AbstractRepository;
 use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Validator\Constraints\Collection;

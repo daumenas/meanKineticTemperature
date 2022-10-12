@@ -1,5 +1,6 @@
 <?php
-namespace App\Entity;
+namespace App\Domain\FileManagement\Model\Entity;
+use App\Domain\UserManagement\Model\Entity\UserFile;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -16,42 +17,44 @@ class File {
     private ?int $id = null;
 
     /**
-     * @ORM\Column(type="datetime", length=100, nullable=false)
+     * @ORM\Column(type="string", length=100, nullable=false)
      */
-    private \DateTime $submitted;
+    private string $submitted;
 
     /**
      * @ORM\Column(type="float", length=100, nullable=true)
      */
-    private ?float $meanKineticTemperature;
+    private ?float $meanKineticTemperature = null;
 
     /**
      * @ORM\OneToMany(
-     *      targetEntity="userFile",
+     *      targetEntity="App\Domain\UserManagement\Model\Entity\UserFile",
      *      mappedBy="file",
      *      cascade={"persist", "remove"}
      * )
      */
     protected Collection $userFile;
 
-    public function __construct
-    (
-        \DateTime $submitted
-    )
-    {
-        $this->submitted = $submitted;
-
-        $this->userFile = new ArrayCollection();
-    }
+//    public function __construct($submitted)
+//    {
+//        $this->submitted = $submitted;
+//
+//        $this->userFile = new ArrayCollection();
+//    }
 
     public function getId(): int
     {
         return $this->id;
     }
 
-    public function getSubmitted(): \DateTime
+    public function getSubmitted(): string
     {
         return $this->submitted;
+    }
+
+    public function setSubmitted(string $submitted): void
+    {
+        $this->submitted = $submitted;
     }
 
     public function getMeanKineticTemperature(): ?float
@@ -59,7 +62,7 @@ class File {
         return $this->meanKineticTemperature;
     }
 
-    public function setMeanKineticTemperature(float $meanKineticTemperature): void
+    public function setMeanKineticTemperature(?float $meanKineticTemperature): void
     {
         $this->meanKineticTemperature = $meanKineticTemperature;
     }

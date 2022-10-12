@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="user-ip">
+        {{ user.ipAddress }}
+    </div>
+</div>
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="sticky">Temperature</th>
+            <th class="sticky">Date</th>
+            <th class="sticky">Mean Kinetic Temperature</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user_file in user_files %}
+            <tr>
+                <td>{{ user_file.temperature }}</td>
+                <td>{{ user_file.dateTime }}</td>
+                <td>{{ user_file.file.meanKineticTemperature }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">No data</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>

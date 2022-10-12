@@ -1,5 +1,5 @@
 <?php
-namespace App\Entity;
+namespace App\Domain\UserManagement\Model\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,18 +22,18 @@ class User {
 
     /**
      * @ORM\OneToMany(
-     *      targetEntity="userFile",
+     *      targetEntity="UserFile",
      *      mappedBy="user",
      *      cascade={"persist", "remove"}
      * )
      */
     protected ?Collection $userFile;
 
-    public function __construct(string $ipAddress)
-    {
-        $this->ipAddress = $ipAddress;
-        $this->userFile = new ArrayCollection();
-    }
+//    public function __construct(string $ipAddress)
+//    {
+//        $this->ipAddress = $ipAddress;
+//        $this->userFile = new ArrayCollection();
+//    }
 
     public function getId(): int
     {
@@ -45,13 +45,13 @@ class User {
         return $this->ipAddress;
     }
 
+    public function setIpAddress(string $ipAddress): void
+    {
+        $this->ipAddress = $ipAddress;
+    }
+
     public function getUserFiles(): ?Collection
     {
         return $this->userFile;
-    }
-
-    public function addUserFile(UserFile $userFile): void
-    {
-        $this->userFile->add($userFile);
     }
 }
