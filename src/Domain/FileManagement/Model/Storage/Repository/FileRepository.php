@@ -3,7 +3,7 @@
 namespace App\Domain\FileManagement\Model\Storage\Repository;
 
 use App\Domain\FileManagement\Model\Entity\File;
-use App\Domain\Model\Entity\UserManagement\User;
+use App\Domain\UserManagement\Model\Entity\User;
 use App\Repository\AbstractRepository;
 use Doctrine\ORM\EntityNotFoundException;
 use Doctrine\Persistence\ManagerRegistry;

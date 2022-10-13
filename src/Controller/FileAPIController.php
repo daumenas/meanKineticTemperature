@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("api/file")
  */
-class FileController extends AbstractController
+class FileAPIController extends AbstractController
 {
     /** @required */
     public UserService $userService;
